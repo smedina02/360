@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body class="amenities-gallery-page"> <div class="header">
+<body class="amenities-gallery-page">
+    <div class="header">
         <div class="header-left">
             <span class="material-icons menu-icon">menu</span>
             <span class="material-icons back-icon" onclick="history.back()">arrow_back</span>
@@ -18,10 +19,9 @@
     </div>
 
     <div class="image-gallery-container">
-       
-        <img src="assets/images/amenity-1.jpg" alt="Imagen de Amenity" class="current-gallery-image" id="amenityGalleryImage">
-        <span class="material-icons gallery-arrow left-arrow" id="prevAmenityImage">chevron_left</span>
-        <span class="material-icons gallery-arrow right-arrow" id="nextAmenityImage">chevron_right</span>
+        <img src="assets/images/amenities-pool.jpg" alt="Piscina de Amenities" class="amenities-gallery-image" id="amenitiesGalleryImage">
+        <span class="material-icons gallery-arrow left-arrow" id="prevAmenitiesImage">chevron_left</span>
+        <span class="material-icons gallery-arrow right-arrow" id="nextAmenitiesImage">chevron_right</span>
     </div>
 
     <div class="sidebar" id="sidebar">
@@ -31,13 +31,9 @@
         </div>
         <ul class="sidebar-nav">
             <li><a href="index.html"><span class="material-icons">home</span> Inicio</a></li>
-            <li><a href="project-overview.html"><span class="material-icons">map</span> Masterplan</a></li>
-            <li><a href="amenities-gallery.html"><span class="material-icons">spa</span> Amenities</a></li>
-            <li><a href="#"><span class="material-icons">directions_walk</span> Recorridos</a></li>
+            <li><a href="panorama.html"><span class="material-icons">360</span> Recorrido 360</a></li>
             <li><a href="#"><span class="material-icons">play_circle_filled</span> Video</a></li>
             <li><a href="#"><span class="material-icons">description</span> Brochure</a></li>
-            <li><a href="location.html"><span class="material-icons">location_on</span> Ubicación</a></li>
-            <li><a href="contact.html"><span class="material-icons">contact_mail</span> Contacto</a></li>
         </ul>
         <div class="sidebar-footer">
             <div class="social-icons">
@@ -52,29 +48,24 @@
 
     <script src="js/script.js"></script>
     <script>
-        // Lista de imágenes de amenities (DEBES REEMPLAZAR ESTOS PLACEHOLDERS CON TUS RUTAS REALES)
-        const amenityImages = [
+        // Script específico para la galería de amenities
+        const amenitiesImages = [
             'assets/images/amenity-1.jpg', // Usa image_067d59.jpg aquí
             'assets/images/amenity-2.jpg', // Placeholder - Añade tus imágenes aquí
             'assets/images/amenity-3.jpg'  // Placeholder - Añade tus imágenes aquí
         ];
-        let currentAmenityImageIndex = 0;
+        let currentAmenitiesImageIndex = 0;
+        const amenitiesGalleryImage = document.getElementById('amenitiesGalleryImage');
 
-        const amenityGalleryImage = document.getElementById('amenityGalleryImage');
-        const prevAmenityImageBtn = document.getElementById('prevAmenityImage');
-        const nextAmenityImageBtn = document.getElementById('nextAmenityImage');
+        document.getElementById('prevAmenitiesImage').addEventListener('click', () => {
+            currentAmenitiesImageIndex = (currentAmenitiesImageIndex - 1 + amenitiesImages.length) % amenitiesImages.length;
+            amenitiesGalleryImage.src = amenitiesImages[currentAmenitiesImageIndex];
+        });
 
-        if (amenityGalleryImage && prevAmenityImageBtn && nextAmenityImageBtn) {
-            prevAmenityImageBtn.addEventListener('click', () => {
-                currentAmenityImageIndex = (currentAmenityImageIndex - 1 + amenityImages.length) % amenityImages.length;
-                amenityGalleryImage.src = amenityImages[currentAmenityImageIndex];
-            });
-
-            nextAmenityImageBtn.addEventListener('click', () => {
-                currentAmenityImageIndex = (currentAmenityImageIndex + 1) % amenityImages.length;
-                amenityGalleryImage.src = amenityImages[currentAmenityImageIndex];
-            });
-        }
+        document.getElementById('nextAmenitiesImage').addEventListener('click', () => {
+            currentAmenitiesImageIndex = (currentAmenitiesImageIndex + 1) % amenitiesImages.length;
+            amenitiesGalleryImage.src = amenitiesImages[currentAmenitiesImageIndex];
+        });
     </script>
 </body>
 </html>

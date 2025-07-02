@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nice Delta Residences - Ubicación</title>
+    <title>Nice Delta Residences - Contacto</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body class="location-page">
+<body class="contact-page">
     <div class="header">
         <div class="header-left">
             <span class="material-icons menu-icon">menu</span>
@@ -18,15 +18,44 @@
         </div>
     </div>
 
-    <div class="location-info-panel">
-        <h2>Puntos de interés</h2>
-        <ul>
-            <li><span class="material-icons">local_dining</span> 1. Kansas</li>
-            <li><span class="material-icons">school</span> 2. Northville College</li>
-            <li><span class="material-icons">shopping_bag</span> 3. Nordelta Centro Comercial</li>
-            <li><span class="material-icons">hotel</span> 4. Wyndham Nordelta</li>
-            <li><span class="material-icons">restaurant</span> 5. Restaurantes de la Bahía</li>
-        </ul>
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2>Contáctanos</h2>
+            <p><span class="material-icons">location_on</span> Dirección Ficticia 123, Ciudad, País</p>
+            <p><span class="material-icons">phone</span> +11 2345 6789</p>
+            <p><span class="material-icons">email</span> info@niceriver.com</p>
+            <p><img src="assets/images/instagram-icon.png" alt="Instagram" class="icon" style="height: 20px; width: 20px;"> @NiceDeltaResidences</p>
+        </div>
+        <div class="contact-form">
+            <h3>Envíanos un mensaje</h3>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Nombre Completo:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono (opcional):</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="subject">Asunto:</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="privacy" name="privacy" required>
+                    <label for="privacy">Acepto la política de privacidad</label>
+                </div>
+                <button type="submit" class="btn primary-btn form-submit-btn">Enviar Mensaje</button>
+            </form>
+        </div>
     </div>
 
     <div class="sidebar" id="sidebar">
@@ -36,13 +65,9 @@
         </div>
         <ul class="sidebar-nav">
             <li><a href="index.html"><span class="material-icons">home</span> Inicio</a></li>
-            <li><a href="project-overview.html"><span class="material-icons">map</span> Masterplan</a></li>
-            <li><a href="amenities-gallery.html"><span class="material-icons">spa</span> Amenities</a></li>
-            <li><a href="#"><span class="material-icons">directions_walk</span> Recorridos</a></li>
+            <li><a href="panorama.html"><span class="material-icons">360</span> Recorrido 360</a></li>
             <li><a href="#"><span class="material-icons">play_circle_filled</span> Video</a></li>
             <li><a href="#"><span class="material-icons">description</span> Brochure</a></li>
-            <li><a href="location.html"><span class="material-icons">location_on</span> Ubicación</a></li>
-            <li><a href="contact.html"><span class="material-icons">contact_mail</span> Contacto</a></li>
         </ul>
         <div class="sidebar-footer">
             <div class="social-icons">

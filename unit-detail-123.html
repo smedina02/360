@@ -17,9 +17,9 @@
             <div class="dropdown-container">
                 <button class="btn btn-top-right" id="verMasBtn">Ver más</button>
                 <div class="dropdown-content" id="verMasDropdown">
-                    <a href="#">Planta 3D</a> <a href="unit-gallery-123.html">Galería</a>
-                    <a href="#">Recorrido virtual</a>
-                </div>
+                    <a href="#">Planta 3D</a>
+                    <a href="unit-gallery-123.html">Galería</a>
+                    <a href="panorama.html">Recorrido 360</a> </div>
             </div>
             <span class="material-icons fullscreen-icon" id="fullscreenToggle">fullscreen</span>
         </div>
@@ -65,13 +65,8 @@
         </div>
         <ul class="sidebar-nav">
             <li><a href="index.html"><span class="material-icons">home</span> Inicio</a></li>
-            <li><a href="project-overview.html"><span class="material-icons">map</span> Masterplan</a></li>
-            <li><a href="amenities-gallery.html"><span class="material-icons">spa</span> Amenities</a></li>
-            <li><a href="#"><span class="material-icons">directions_walk</span> Recorridos</a></li>
-            <li><a href="#"><span class="material-icons">play_circle_filled</span> Video</a></li>
+            <li><a href="panorama.html"><span class="material-icons">360</span> Recorrido 360</a></li> <li><a href="#"><span class="material-icons">play_circle_filled</span> Video</a></li>
             <li><a href="#"><span class="material-icons">description</span> Brochure</a></li>
-            <li><a href="location.html"><span class="material-icons">location_on</span> Ubicación</a></li>
-            <li><a href="contact.html"><span class="material-icons">contact_mail</span> Contacto</a></li>
         </ul>
         <div class="sidebar-footer">
             <div class="social-icons">
@@ -90,7 +85,6 @@
             document.getElementById('verMasDropdown').classList.toggle('show');
         });
 
-        // Close the dropdown if the user clicks outside of it
         window.onclick = function(event) {
             if (!event.target.matches('#verMasBtn')) {
                 const dropdowns = document.getElementsByClassName("dropdown-content");
@@ -107,12 +101,11 @@
         const masDetallesBtn = document.getElementById('masDetallesBtn');
         const closeInfoPanelBtn = document.getElementById('closeInfoPanel');
 
-        // Initial state: panel visible
         unitInfoPanel.classList.add('active'); 
 
         masDetallesBtn.addEventListener('click', () => {
             unitInfoPanel.classList.toggle('active');
-            masDetallesBtn.textContent = unitInfoPanel.classList.contains('active') ? 'Ocultar detalles' : 'Más detalles'; // Toggle text
+            masDetallesBtn.textContent = unitInfoPanel.classList.contains('active') ? 'Ocultar detalles' : 'Más detalles';
         });
 
         closeInfoPanelBtn.addEventListener('click', () => {
