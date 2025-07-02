@@ -1,0 +1,973 @@
+/* General Body & HTML */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif; /* Example font */
+    color: #333;
+    overflow: hidden; /* Prevent body scroll when sidebar is active */
+}
+
+body {
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.header {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px; /* Default size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+    cursor: pointer;
+    color: #333; /* Default icon color */
+}
+
+.menu-icon, .back-icon, .fullscreen-icon {
+    font-size: 28px;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.menu-icon:hover, .back-icon:hover, .fullscreen-icon:hover {
+    color: #007bff; /* Example hover color */
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.primary-btn {
+    background-color: #007bff; /* Primary brand color */
+    color: #fff;
+}
+
+.primary-btn:hover {
+    background-color: #0056b3;
+}
+
+.secondary-btn {
+    background-color: #6c757d; /* Secondary neutral color */
+    color: #fff;
+}
+
+.secondary-btn:hover {
+    background-color: #5a6268;
+}
+
+.light-btn {
+    background-color: #e2e6ea;
+    color: #333;
+    border: 1px solid #ced4da;
+}
+
+.light-btn:hover {
+    background-color: #dae0e5;
+}
+
+.btn-top-right {
+    background-color: #fff;
+    color: #007bff;
+    border: 1px solid #007bff;
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+.btn-top-right:hover {
+    background-color: #f0f8ff;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Hidden by default */
+    width: 280px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    transition: left 0.3s ease;
+    z-index: 1100; /* Above header */
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.sidebar-logo {
+    height: 40px; /* Adjust as needed */
+}
+
+.close-sidebar-icon {
+    font-size: 30px;
+    color: #555;
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 20px 0;
+    margin: 0;
+    flex-grow: 1; /* Allows navigation to take available space */
+}
+
+.sidebar-nav li a {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-nav li a .material-icons {
+    margin-right: 15px;
+    font-size: 24px;
+    color: #666;
+}
+
+.sidebar-nav li a:hover {
+    background-color: #f0f0f0;
+    color: #007bff;
+}
+
+.sidebar-nav li a:hover .material-icons {
+    color: #007bff;
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.social-icons {
+    margin-bottom: 10px;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    color: #555;
+    text-decoration: none;
+    font-size: 24px;
+    transition: color 0.2s ease;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}
+
+.social-icons .icon { /* For custom image icons like Instagram */
+    height: 24px;
+    vertical-align: middle;
+}
+
+.sidebar-footer p {
+    font-size: 12px;
+    color: #888;
+    margin: 0;
+}
+
+/* Overlay for sidebar */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1050;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Landing Page Specific */
+.landing-page {
+    background-color: #fff; /* Or a background image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.landing-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.landing-logo {
+    max-width: 80%;
+    height: auto;
+}
+
+/* Project Overview Page Specific */
+.project-overview-page {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-top: 60px; /* Space for fixed header */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.center-hotspot {
+    position: absolute;
+    top: 50%; /* Adjust as needed */
+    left: 50%; /* Adjust as needed */
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.hotspot-circle {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 123, 255, 0.7); /* Blue circle */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+}
+
+.hotspot-circle::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+.center-hotspot:hover .hotspot-circle {
+    transform: scale(1.1);
+}
+
+.hotspot-info {
+    position: absolute;
+    bottom: calc(100% + 15px); /* Position above the circle */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    text-align: center;
+    min-width: 200px;
+}
+
+.center-hotspot:hover .hotspot-info {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hotspot-info h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.hotspot-info .secondary-btn {
+    margin-top: 10px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.6); opacity: 0.8; }
+    50% { transform: scale(1); opacity: 0; }
+    100% { transform: scale(0.6); opacity: 0.8; }
+}
+
+/* Main View Page Specific (Gallery) & Amenities Gallery Page */
+.main-view-page, .unit-gallery-page, .amenities-gallery-page {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-top: 60px; /* Space for fixed header */
+    box-sizing: border-box;
+    position: relative; /* Needed for absolute positioning of arrows */
+    overflow: hidden; /* Hide scrollbars if image is larger */
+}
+
+.image-gallery-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000; /* Black background for gallery */
+    flex-grow: 1;
+}
+
+.current-project-image, .current-gallery-image, .amenities-gallery-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensure image fits within container */
+    display: block;
+}
+
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 60px; /* Large arrows */
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 10;
+}
+
+.gallery-arrow:hover {
+    color: #fff;
+}
+
+.left-arrow {
+    left: 20px;
+}
+
+.right-arrow {
+    right: 20px;
+}
+
+/* Floor Selector Page Specific */
+.floor-selector-page {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-grow: 1;
+    display: flex;
+    padding-top: 60px; /* Space for fixed header */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.floor-selector-menu {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.floor-btn {
+    padding: 8px 15px;
+    background-color: #e9ecef;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    text-align: center;
+    min-width: 60px;
+}
+
+.floor-btn:hover {
+    background-color: #dee2e6;
+}
+
+.floor-btn.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Unit Hotspot (For Floor Plans) */
+.unit-hotspot {
+    position: absolute;
+    z-index: 5;
+    cursor: pointer;
+    display: flex; /* Para centrar el pin si es un icono */
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- Tarea 6: Estilo del Pin en Selector de Plantas --- */
+/* Puedes usar un icono de Material Icons para el pin */
+.unit-hotspot .material-icons {
+    font-size: 36px; /* Tamaño del pin */
+    color: #00ff00; /* Color del pin (rojo) */
+    text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Sombra para que destaque */
+    opacity: 0.8;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.unit-hotspot:hover .material-icons,
+.unit-hotspot.active-pin .material-icons {
+    transform: scale(1.2); /* Efecto de hover/activo */
+    opacity: 1;
+    color: #ff4500; /* Un rojo más vibrante al pasar el ratón o estar activo */
+}
+
+/* Opcional: si quieres un hotspot invisible que al hacer hover revele el pin */
+.unit-hotspot .hotspot-area {
+    position: absolute;
+    width: 50px; /* Área de clic más grande que el pin */
+    height: 50px;
+    border-radius: 50%;
+    /* background-color: rgba(255, 255, 0, 0.3); */ /* Para depuración */
+    z-index: 1; /* Asegura que el área de clic esté sobre el pin */
+}
+
+/* Información del Hotspot (se muestra al pasar el ratón) */
+.unit-hotspot .hotspot-info {
+    position: absolute;
+    bottom: calc(100% + 10px); /* Ajusta la posición de la caja de información */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    text-align: center;
+    min-width: 180px;
+    z-index: 10;
+}
+
+.unit-hotspot:hover .hotspot-info {
+    opacity: 1;
+    visibility: visible;
+}
+
+.unit-hotspot .hotspot-info h4 {
+    margin: 0 0 5px 0;
+    color: #333;
+    font-size: 16px;
+}
+
+.unit-hotspot .hotspot-info p {
+    margin: 0 0 3px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.unit-hotspot .hotspot-info .secondary-btn {
+    margin-top: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+
+/* Unit Detail Page */
+.unit-detail-page {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-top: 60px; /* Space for fixed header */
+    box-sizing: border-box;
+    position: relative;
+    background-color: #000; /* Black background for 3D plan */
+    overflow: hidden;
+}
+
+.unit-main-content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure content doesn't overflow */
+}
+
+.unit-3d-plan {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.unit-info-panel {
+    position: fixed; /* Fixed to viewport */
+    top: 60px; /* Below header */
+    right: -350px; /* Hidden by default */
+    width: 320px;
+    height: calc(100% - 60px); /* Full height minus header */
+    background-color: #fff;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 900;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Enable scrolling for content */
+}
+
+.unit-info-panel.active {
+    right: 0;
+}
+
+.close-info-panel-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    color: #555;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.info-panel-header {
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+.unit-info-thumbnail {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.info-panel-header h2 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.info-panel-header p {
+    margin: 0;
+    color: #666;
+    font-size: 15px;
+}
+
+.status.available {
+    color: green;
+    font-weight: bold;
+}
+.status.reserved {
+    color: orange;
+    font-weight: bold;
+}
+.status.sold {
+    color: red;
+    font-weight: bold;
+}
+
+.info-panel-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.info-panel-details {
+    flex-grow: 1;
+    margin-bottom: 20px;
+}
+
+.info-panel-details p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dotted #eee;
+    margin: 0;
+    font-size: 15px;
+}
+
+.info-panel-details p:last-child {
+    border-bottom: none;
+}
+
+.btn-solicitar-info {
+    width: 100%;
+    margin-top: auto; /* Pushes button to the bottom */
+}
+
+.footer-button-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 950;
+}
+
+/* Dropdown for "Ver más" */
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px; /* Spacing from fullscreen icon */
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 0; /* Align to the right of the button */
+    border-radius: 5px;
+    overflow: hidden;
+    top: calc(100% + 5px); /* Position below the button */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s ease;
+    font-size: 15px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+/* Bottom Left Icons */
+.bottom-left-icons {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 10;
+}
+
+.bottom-left-icons .material-icons {
+    font-size: 32px;
+    color: #555;
+    background-color: rgba(255,255,255,0.8);
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.bottom-left-icons .material-icons:hover {
+    color: #007bff;
+    background-color: #fff;
+    transform: scale(1.1);
+}
+
+/* Contact Page Specific */
+.contact-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 80px 20px; /* Top padding for header, some side padding */
+    box-sizing: border-box;
+    background-color: #f5f5f5; /* Light background */
+    background-image: url('assets/images/contact-background.jpg'); /* Optional, if you have a specific background */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow-y: auto; /* Allow scrolling if content is tall */
+}
+
+.contact-container {
+    background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent white background for content */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-info {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.contact-info h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.contact-info p .material-icons,
+.contact-info p .icon {
+    font-size: 20px;
+    color: #007bff;
+}
+
+.contact-form h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group textarea,
+.form-group select {
+    width: calc(100% - 20px); /* Account for padding */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: #555;
+}
+
+.checkbox-group input[type="checkbox"] {
+    transform: scale(1.2); /* Make checkbox slightly larger */
+}
+
+.form-submit-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+}
+
+/* Location Page Specific */
+.location-page {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    padding-top: 60px; /* Space for fixed header */
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    background-image: url('assets/images/location-background.jpg'); /* Imagen de fondo para ubicación */
+}
+
+.location-info-panel {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    max-width: 400px;
+    text-align: left;
+    z-index: 10;
+}
+
+.location-info-panel h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.location-info-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.location-info-panel ul li {
+    display: flex;
+    align-items: flex-start; /* Align icon to top of text */
+    margin-bottom: 15px;
+    color: #555;
+    font-size: 16px;
+}
+
+.location-info-panel ul li .material-icons {
+    font-size: 24px;
+    color: #007bff;
+    margin-right: 10px;
+    flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+/* Responsive Adjustments (Basic) */
+@media (max-width: 768px) {
+    .header {
+        height: 50px;
+        padding: 0 10px;
+    }
+
+    .menu-icon, .back-icon, .fullscreen-icon {
+        font-size: 24px;
+    }
+
+    .sidebar {
+        width: 250px;
+    }
+
+    .sidebar-nav li a {
+        font-size: 16px;
+    }
+
+    .sidebar-nav li a .material-icons {
+        font-size: 20px;
+    }
+
+    .unit-info-panel {
+        width: 100%;
+        height: auto;
+        top: auto;
+        bottom: -100%; /* Hidden by default at bottom */
+        right: 0;
+        left: 0;
+        padding: 15px;
+        transition: bottom 0.3s ease;
+    }
+
+    .unit-info-panel.active {
+        bottom: 0;
+    }
+
+    .footer-button-container {
+        display: none; /* Hide toggle button on small screens */
+    }
+
+    .close-info-panel-icon {
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+    }
+
+    .floor-selector-menu {
+        right: 10px;
+        padding: 10px;
+    }
+
+    .floor-btn {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+
+    .bottom-left-icons {
+        bottom: 10px;
+        left: 10px;
+        gap: 10px;
+    }
+
+    .bottom-left-icons .material-icons {
+        font-size: 28px;
+        padding: 6px;
+    }
+
+    .contact-container {
+        padding: 20px;
+        margin: 20px auto; /* Center with margin for smaller screens */
+    }
+
+    .location-info-panel {
+        padding: 20px;
+        max-width: 90%;
+    }
+}
