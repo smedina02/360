@@ -20,40 +20,44 @@
 
     <div class="contact-container">
         <div class="contact-info">
-            <h2>Contáctanos</h2>
-            <p><span class="material-icons">location_on</span> Dirección Ficticia 123, Ciudad, País</p>
-            <p><span class="material-icons">phone</span> +11 2345 6789</p>
-            <p><span class="material-icons">email</span> info@niceriver.com</p>
-            <p><img src="assets/images/instagram-icon.png" alt="Instagram" class="icon" style="height: 20px; width: 20px;"> @NiceDeltaResidences</p>
+            <h2>Contacto</h2>
+            <p><span class="material-icons">email</span> caceresjuan.dev@gmail.com</p>
+            <p><span class="material-icons">link</span> https://brothersdevlp.com/</p>
+            <p><img src="assets/images/instagram-icon.png" alt="Instagram" class="icon"> Instagram</p>
         </div>
+
         <div class="contact-form">
-            <h3>Envíanos un mensaje</h3>
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label for="name">Nombre Completo:</label>
-                    <input type="text" id="name" name="name" required>
+            <h3>¿Tienes alguna consulta?</h3>
+            <form action="#" method="POST"> <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Correo Electrónico:</label>
+                    <label for="email">Correo electrónico</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Teléfono (opcional):</label>
-                    <input type="tel" id="phone" name="phone">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono">
                 </div>
                 <div class="form-group">
-                    <label for="subject">Asunto:</label>
-                    <input type="text" id="subject" name="subject" required>
+                    <label for="consulta">Solicita más información para</label>
+                    <select id="consulta" name="consulta">
+                        <option value="">Seleccione una opción</option>
+                        <option value="unidades">Unidades</option>
+                        <option value="amenities">Amenities</option>
+                        <option value="general">Información General</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="message">Mensaje:</label>
-                    <textarea id="message" name="message" required></textarea>
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="5"></textarea>
                 </div>
                 <div class="checkbox-group">
-                    <input type="checkbox" id="privacy" name="privacy" required>
-                    <label for="privacy">Acepto la política de privacidad</label>
+                    <input type="checkbox" id="privacidad" name="privacidad" required>
+                    <label for="privacidad">He leído y acepto la política de privacidad</label>
                 </div>
-                <button type="submit" class="btn primary-btn form-submit-btn">Enviar Mensaje</button>
+                <button type="submit" class="btn primary-btn form-submit-btn">Enviar</button>
             </form>
         </div>
     </div>
@@ -65,9 +69,13 @@
         </div>
         <ul class="sidebar-nav">
             <li><a href="index.html"><span class="material-icons">home</span> Inicio</a></li>
-            <li><a href="panorama.html"><span class="material-icons">360</span> Recorrido 360</a></li>
+            <li><a href="project-overview.html"><span class="material-icons">map</span> Masterplan</a></li>
+            <li><a href="amenities-gallery.html"><span class="material-icons">spa</span> Amenities</a></li>
+            <li><a href="#"><span class="material-icons">directions_walk</span> Recorridos</a></li>
             <li><a href="#"><span class="material-icons">play_circle_filled</span> Video</a></li>
             <li><a href="#"><span class="material-icons">description</span> Brochure</a></li>
+            <li><a href="location.html"><span class="material-icons">location_on</span> Ubicación</a></li>
+            <li><a href="contact.html"><span class="material-icons">contact_mail</span> Contacto</a></li>
         </ul>
         <div class="sidebar-footer">
             <div class="social-icons">

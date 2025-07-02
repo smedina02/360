@@ -458,10 +458,11 @@ body {
     align-items: center;
 }
 
-/* Estilo del Pin en Selector de Plantas */
+/* --- Tarea 6: Estilo del Pin en Selector de Plantas --- */
+/* Puedes usar un icono de Material Icons para el pin */
 .unit-hotspot .material-icons {
     font-size: 36px; /* Tamaño del pin */
-    color: #ff0000; /* Color del pin (rojo) */
+    color: #00ff00; /* Color del pin (rojo) */
     text-shadow: 0 0 5px rgba(0,0,0,0.5); /* Sombra para que destaque */
     opacity: 0.8;
     transition: transform 0.2s ease, opacity 0.2s ease;
@@ -891,33 +892,6 @@ body {
     flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
-/* Estilo específico para la página de panorama (Tarea 7) */
-.panorama-page {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    padding-top: 60px; /* Espacio para el encabezado fijo */
-    box-sizing: border-box;
-    overflow: hidden; /* Oculta barras de desplazamiento del cuerpo si el iframe las tiene */
-    background-color: #000; /* Fondo oscuro para el panorama */
-}
-
-.panorama-container {
-    flex-grow: 1;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.panorama-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none; /* Elimina el borde predeterminado del iframe */
-    display: block; /* Elimina espacios extra debajo del iframe */
-}
-
 /* Responsive Adjustments (Basic) */
 @media (max-width: 768px) {
     .header {
@@ -996,4 +970,31 @@ body {
         padding: 20px;
         max-width: 90%;
     }
+}
+
+/* Estilo específico para la página de panorama (Tarea 7) */
+.panorama-page {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-top: 60px; /* Espacio para el encabezado fijo */
+    box-sizing: border-box;
+    overflow: hidden; /* Oculta barras de desplazamiento del cuerpo si el iframe las tiene */
+    background-color: #000; /* Fondo oscuro para el panorama */
+}
+
+.panorama-container {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.panorama-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none; /* Elimina el borde predeterminado del iframe */
+    display: block; /* Elimina espacios extra debajo del iframe */
 }
