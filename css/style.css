@@ -284,16 +284,16 @@ body {
 }
 
 .hotspot-circle {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(0, 123, 255, 0.7); /* Blue circle */
+    width: 30px;
+    height: 30px;
+    background-color: rgba(168, 0, 0, 0.7); /* Blue circle */
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
     border: 2px solid #fff;
-    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 10px rgba(151, 21, 21, 0.5);
 }
 
 .hotspot-circle::after {
