@@ -447,7 +447,7 @@ const unitData = {
 // ** DATOS DE LAS PLANTAS (TAREA 2: Consolidar Selector de Plantas) **
 const floorData = {
     "TOP": {
-        planImage: "assets/images/floor-top-plan.png",
+        planImage: "assets/images/aerial-view.webp",
         hotspots: [
             { id: "PH-A", x: "20%", y: "30%", unitId: "123" },
             { id: "PH-B", x: "60%", y: "50%", unitId: "101" }
@@ -504,7 +504,7 @@ const floorData = {
         ]
     },
     "1": {
-        planImage: "assets/images/floor-1-plan.png",
+        planImage: "assets/images/floor-1-plan.webp",
         hotspots: [
             { id: "101", x: "15%", y: "25%", unitId: "101" },
             { id: "102", x: "50%", y: "70%", unitId: "123" }
