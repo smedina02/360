@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nice Delta Residences - Planos de Planta</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Estilos básicos para la imagen del plano y los hotspots */
+        .floor-plan-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px; /* O el tamaño máximo de tus imágenes de plano */
+            margin: auto;
+            /* overflow: hidden; /* Esto puede ser útil si los hotspots se salen de los límites */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 500px; /* Para que no se colapse antes de cargar la imagen */
+            background-color: #333; /* Color de fondo mientras carga */
+        }
+
+        .floor-plan-image-container .floor-plan-image {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Reutilizamos y ajustamos estilos para los hotspots si es necesario */
+        .unit-hotspot {
+            position: absolute; /* Crucial para posicionar sobre la imagen */
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            width: 40px; /* Ajusta el tamaño del pin */
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            transform: translate(-50%, -50%); /* Centra el pin en sus coordenadas x, y */
+            z-index: 10; /* Para que esté por encima de la imagen */
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+
+        .unit-hotspot:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translate(-50%, -50%) scale(1.1);
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            z-index: 11;
+        }
+        .unit-hotspot.active-pin {
+            border-color: red; /* Color para el pin activo */
+            background-color: red;
+            color: white;
+        }
+
+        /* Estilos para el hotspot-info box (al pasar el ratón) */
+        .hotspot-info {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            min-width: 180px;
+            text-align: left;
+            left: 50%; /* Posiciona el tooltip relativo al hotspot */
+            bottom: 100%; /* Aparece encima del hotspot */
+            transform: translateX(-50%) translateY(-10px); /* Ajusta posición */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 20; /* Para que esté por encima de todo */
+            pointer-events: none; /* Permite clics a través del info box si no tiene botones */
+        }
+        .unit-hotspot:hover .hotspot-info {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto; /* Habilita clics en el info box cuando es visible */
+        }
+        .hotspot-info h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1em;
+            color: var(--secondary-color);
+        }
+        .hotspot-info p {
+            margin: 3px 0;
+            font-size: 0.9em;
+        }
+        .hotspot-info .status {
+            font-weight: bold;
+        }
+        .hotspot-info .status.available { color: var(--available-color, #4CAF50); }
+        .hotspot-info .status.reserved { color: var(--reserved-color, #FFC107); }
+        .hotspot-info .status.sold { color: var(--sold-color, #F44336); }
+
+        .hotspot-info .btn-sm {
+            padding: 5px 10px;
+            font-size: 0.8em;
+            margin-top: 8px;
+            display: block; /* Ocupa todo el ancho si es un botón de acción */
+            text-align: center;
+        }
+
+        /* Estilos para el contenedor de botones de plantas (si va en el main-content) */
+        .floor-buttons-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px;
+            background-color: #222;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .floor-selector-btn {
+            background-color: #444;
+            color: white;
+            border: 1px solid #555;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+            font-size: 0.9em;
+        }
+        .floor-selector-btn:hover {
+            background-color: #555;
+        }
+        .floor-selector-btn.active {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Media queries para ajustar el tamaño de los pins en móviles */
+        @media (max-width: 768px) {
+            .unit-hotspot {
+                width: 30px;
+                height: 30px;
+                font-size: 0.7em;
+            }
+            .hotspot-info {
+                min-width: 150px;
+                font-size: 0.8em;
+            }
+        }
+
+    </style>
+</head>
+<body class="floor-plans-page"> <div class="header">
+        <div class="header-left">
+            <span class="material-icons menu-icon">menu</span>
+            <span class="material-icons back-icon" onclick="history.back()">arrow_back</span>
+        </div>
+        <div class="header-right">
+            <span class="material-icons fullscreen-icon" id="fullscreenToggle">fullscreen</span>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="floor-buttons-container">
+            <button class="floor-selector-btn" data-floor-id="TOP">TOP</button>
+            <button class="floor-selector-btn" data-floor-id="9">9</button>
+            <button class="floor-selector-btn" data-floor-id="8">8</button>
+            <button class="floor-selector-btn" data-floor-id="7">7</button>
+            <button class="floor-selector-btn" data-floor-id="6">6</button>
+            <button class="floor-selector-btn" data-floor-id="5">5</button>
+            <button class="floor-selector-btn" data-floor-id="4">4</button>
+            <button class="floor-selector-btn" data-floor-id="3">3</button>
+            <button class="floor-selector-btn" data-floor-id="2">2</button>
+            <button class="floor-selector-btn" data-floor-id="1">1</button>
+            <button class="floor-selector-btn" data-floor-id="PE">PE</button>
+            <button class="floor-selector-btn" data-floor-id="PB">PB</button>
+        </div>
+
+        <div class="floor-plan-image-container" id="floorPlanImageContainer">
+            <p style="color:white;">Cargando plano de planta...</p>
+        </div>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/images/logo.png" alt="Logo" class="sidebar-logo">
+            <span class="material-icons close-sidebar-icon">close</span>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="index.html"><span class="material-icons">home</span> Inicio</a></li>
+            <li><a href="project-overview.html"><span class="material-icons">architecture</span> Masterplan</a></li>
+            <li><a href="amenities-gallery.html"><span class="material-icons">spa</span> Amenities</a></li>
+            <li><a href="panorama.html"><span class="material-icons">360</span> Recorrido 360</a></li>
+            <li><a href="location.html"><span class="material-icons">location_on</span> Ubicación</a></li>
+            <li><a href="contact.html"><span class="material-icons">contact_mail</span> Contacto</a></li>
+            <li><a href="#"><span class="material-icons">play_circle_filled</span> Video</a></li>
+            <li><a href="#"><span class="material-icons">description</span> Brochure</a></li>
+            <li class="floor-nav-title">Plantas</li>
+            <li><a href="floor-plans.html?floor=TOP" class="floor-sidebar-link" data-floor-id="TOP">TOP</a></li>
+            <li><a href="floor-plans.html?floor=9" class="floor-sidebar-link" data-floor-id="9">Piso 9</a></li>
+            <li><a href="floor-plans.html?floor=8" class="floor-sidebar-link" data-floor-id="8">Piso 8</a></li>
+            <li><a href="floor-plans.html?floor=7" class="floor-sidebar-link" data-floor-id="7">Piso 7</a></li>
+            <li><a href="floor-plans.html?floor=6" class="floor-sidebar-link" data-floor-id="6">Piso 6</a></li>
+            <li><a href="floor-plans.html?floor=5" class="floor-sidebar-link" data-floor-id="5">Piso 5</a></li>
+            <li><a href="floor-plans.html?floor=4" class="floor-sidebar-link" data-floor-id="4">Piso 4</a></li>
+            <li><a href="floor-plans.html?floor=3" class="floor-sidebar-link" data-floor-id="3">Piso 3</a></li>
+            <li><a href="floor-plans.html?floor=2" class="floor-sidebar-link" data-floor-id="2">Piso 2</a></li>
+            <li><a href="floor-plans.html?floor=1" class="floor-sidebar-link" data-floor-id="1">Piso 1</a></li>
+            <li><a href="floor-plans.html?floor=PE" class="floor-sidebar-link" data-floor-id="PE">Piso Entrepiso</a></li>
+            <li><a href="floor-plans.html?floor=PB" class="floor-sidebar-link" data-floor-id="PB">Planta Baja</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="social-icons">
+                <a href="#"><span class="material-icons">email</span></a>
+                <a href="#"><img src="assets/images/instagram-icon.png" alt="Instagram" class="icon"></a>
+                <a href="#"><span class="material-icons">language</span></a>
+            </div>
+            <p>© Powered by urbania3d.app</p>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
