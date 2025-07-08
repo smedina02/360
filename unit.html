@@ -83,5 +83,41 @@
     <div class="overlay" id="overlay"></div>
 
     <script src="js/script.js"></script>
+    <script>
+        document.getElementById('verMasBtn').addEventListener('click', function() {
+            document.getElementById('verMasDropdown').classList.toggle('show');
+        });
+
+        // Close the dropdown if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('#verMasBtn')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    const openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        const unitInfoPanel = document.getElementById('unitInfoPanel');
+        const masDetallesBtn = document.getElementById('masDetallesBtn');
+        const closeInfoPanelBtn = document.getElementById('closeInfoPanel');
+
+        // Initial state: panel visible
+        unitInfoPanel.classList.add('disable'); 
+
+        masDetallesBtn.addEventListener('click', () => {
+            unitInfoPanel.classList.toggle('active');
+            masDetallesBtn.textContent = unitInfoPanel.classList.contains('active') ? 'Ocultar detalles' : 'Más detalles'; // Toggle text
+        });
+
+        closeInfoPanelBtn.addEventListener('click', () => {
+            unitInfoPanel.classList.remove('active');
+            masDetallesBtn.textContent = 'Más detalles';
+        });
+    </script>
+
 </body>
 </html>
