@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nice Delta Residences - Unidad</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="unit-page"> <div class="header">
+        <div class="header-left">
+            <span class="material-icons menu-icon">menu</span>
+            <span class="material-icons back-icon" onclick="history.back()">arrow_back</span>
+        </div>
+        <div class="header-right">
+            <div class="dropdown-container">
+                <button class="btn btn-top-right" id="verMasBtn">Ver más</button>
+                <div class="dropdown-content" id="verMasDropdown">
+                    <a href="#" id="planta3DLink">Planta 3D</a>
+                    <a href="#" id="galeriaLink">Galería</a>
+                    <a href="panorama.html">Recorrido 360</a> </div>
+            </div>
+            <span class="material-icons fullscreen-icon" id="fullscreenToggle">fullscreen</span>
+        </div>
+    </div>
+
+    <div class="unit-main-content" id="unitMainContent">
+        </div>
+
+    <div class="unit-info-panel" id="unitInfoPanel">
+        <span class="material-icons close-info-panel-icon" id="closeInfoPanel">close</span>
+        <div class="info-panel-header">
+            <img src="" alt="Foto Unidad" class="unit-info-thumbnail">
+            <h2 id="unitName">Cargando...</h2>
+            <p id="unitTypologyStatus">Cargando...</p>
+            <div class="info-panel-actions">
+                <button class="btn light-btn">Consultar precio</button>
+                <span class="material-icons share-icon">share</span>
+            </div>
+        </div>
+        <div class="info-panel-details">
+            <p><strong>Tipología:</strong> <span id="unitTipologia"></span></p>
+            <p><strong>Área total:</strong> <span id="unitAreaTotal"></span></p>
+            <p><strong>Área cubierta:</strong> <span id="unitAreaCubierta"></span></p>
+            <p><strong>Área descubierta:</strong> <span id="unitAreaDescubierta"></span></p>
+            <p><strong>Dormitorios:</strong> <span id="unitDormitorios"></span></p>
+            <p><strong>Baños:</strong> <span id="unitBanos"></span></p>
+            <p><strong>Balcón:</strong> <span id="unitBalcon"></span></p>
+            <p><strong>Cochera:</strong> <span id="unitCochera"></span></p>
+            <p><strong>Lavadero:</strong> <span id="unitLavadero"></span></p>
+        </div>
+        <button class="btn primary-btn btn-solicitar-info">Solicitar Información</button>
+    </div>
+
+    <div class="footer-button-container">
+        <button class="btn primary-btn" id="masDetallesBtn">Más detalles</button>
+    </div>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/images/logo.webp" alt="Logo" class="sidebar-logo">
+            <span class="material-icons close-sidebar-icon">close</span>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="index.html"><span class="material-icons">home</span> Inicio</a></li>
+            <li><a href="project-overview.html"><span class="material-icons">architecture</span> Masterplan</a></li>
+            <li><a href="amenities-gallery.html"><span class="material-icons">spa</span> Amenities</a></li>
+            <li><a href="panorama.html"><span class="material-icons">360</span> Recorrido 360</a></li>
+            <li><a href="location.html"><span class="material-icons">location_on</span> Ubicación</a></li>
+            <li><a href="contact.html"><span class="material-icons">contact_mail</span> Contacto</a></li>
+            <li><a href="#"><span class="material-icons">play_circle_filled</span> Video</a></li>
+            <li><a href="#"><span class="material-icons">description</span> Brochure</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="social-icons">
+                <a href="#"><span class="material-icons">email</span></a>
+                <a href="#"><img src="assets/images/instagram-icon.webp" alt="Instagram" class="icon"></a>
+                <a href="#"><span class="material-icons">language</span></a>
+            </div>
+            <p>© Powered by urbania3d.app</p>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
