@@ -7,18 +7,18 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-        /* Estilos básicos para la imagen del plano y los hotspots */
+        /* Estilos básicos para la imagen del plano y los hotspots (mantén estos o intégralos en style.css) */
         .floor-plan-image-container {
             position: relative;
             width: 100%;
             max-width: 1200px; /* O el tamaño máximo de tus imágenes de plano */
             margin: auto;
-            /* overflow: hidden; /* Esto puede ser útil si los hotspots se salen de los límites */
+            /* overflow: hidden; */
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 500px; /* Para que no se colapse antes de cargar la imagen */
-            background-color: #333; /* Color de fondo mientras carga */
+            min-height: 500px;
+            background-color: #333;
         }
 
         .floor-plan-image-container .floor-plan-image {
@@ -27,13 +27,12 @@
             display: block;
         }
 
-        /* Reutilizamos y ajustamos estilos para los hotspots si es necesario */
         .unit-hotspot {
-            position: absolute; /* Crucial para posicionar sobre la imagen */
+            position: absolute;
             background-color: rgba(255, 255, 255, 0.7);
             border: 2px solid var(--primary-color);
             border-radius: 50%;
-            width: 40px; /* Ajusta el tamaño del pin */
+            width: 40px;
             height: 40px;
             display: flex;
             justify-content: center;
@@ -43,8 +42,8 @@
             color: var(--primary-color);
             cursor: pointer;
             transition: all 0.2s ease-in-out;
-            transform: translate(-50%, -50%); /* Centra el pin en sus coordenadas x, y */
-            z-index: 10; /* Para que esté por encima de la imagen */
+            transform: translate(-50%, -50%);
+            z-index: 10;
             box-shadow: 0 0 5px rgba(0,0,0,0.3);
         }
 
@@ -56,12 +55,11 @@
             z-index: 11;
         }
         .unit-hotspot.active-pin {
-            border-color: red; /* Color para el pin activo */
+            border-color: red;
             background-color: red;
             color: white;
         }
 
-        /* Estilos para el hotspot-info box (al pasar el ratón) */
         .hotspot-info {
             position: absolute;
             background-color: rgba(0, 0, 0, 0.8);
@@ -70,19 +68,19 @@
             border-radius: 5px;
             min-width: 180px;
             text-align: left;
-            left: 50%; /* Posiciona el tooltip relativo al hotspot */
-            bottom: 100%; /* Aparece encima del hotspot */
-            transform: translateX(-50%) translateY(-10px); /* Ajusta posición */
+            left: 50%;
+            bottom: 100%;
+            transform: translateX(-50%) translateY(-10px);
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
-            z-index: 20; /* Para que esté por encima de todo */
-            pointer-events: none; /* Permite clics a través del info box si no tiene botones */
+            z-index: 20;
+            pointer-events: none;
         }
         .unit-hotspot:hover .hotspot-info {
             opacity: 1;
             visibility: visible;
-            pointer-events: auto; /* Habilita clics en el info box cuando es visible */
+            pointer-events: auto;
         }
         .hotspot-info h4 {
             margin-top: 0;
@@ -105,11 +103,10 @@
             padding: 5px 10px;
             font-size: 0.8em;
             margin-top: 8px;
-            display: block; /* Ocupa todo el ancho si es un botón de acción */
+            display: block;
             text-align: center;
         }
 
-        /* Estilos para el contenedor de botones de plantas (si va en el main-content) */
         .floor-buttons-container {
             display: flex;
             flex-wrap: wrap;
@@ -138,7 +135,57 @@
             font-weight: bold;
         }
 
-        /* Media queries para ajustar el tamaño de los pins en móviles */
+        /* Estilos para el nuevo menú desplegable de Pisos en el header */
+        .header .dropdown-container {
+            position: relative;
+            display: inline-block; /* Para que el botón y el dropdown estén en línea */
+            margin-right: 10px; /* Espacio entre este dropdown y el icono de fullscreen */
+        }
+
+        .header .dropdown-container .btn-top-right {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .header .dropdown-container .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 100; /* Asegura que esté por encima de otros elementos */
+            right: 0; /* Alinea el dropdown a la derecha de su contenedor */
+            border-radius: 5px;
+            overflow: hidden; /* Para que los bordes redondeados se apliquen a los ítems */
+            margin-top: 5px; /* Espacio entre el botón y el dropdown */
+        }
+
+        .header .dropdown-container .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.2s;
+            font-size: 0.9em;
+        }
+
+        .header .dropdown-container .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .header .dropdown-container .dropdown-content.show {
+            display: block;
+        }
+
+
         @media (max-width: 768px) {
             .unit-hotspot {
                 width: 30px;
@@ -159,6 +206,13 @@
             <span class="material-icons back-icon" onclick="history.back()">arrow_back</span>
         </div>
         <div class="header-right">
+            <div class="dropdown-container">
+                <button class="btn btn-top-right" id="floorSelectBtn">
+                    Pisos <span class="material-icons">arrow_drop_down</span>
+                </button>
+                <div class="dropdown-content" id="floorSelectDropdown">
+                    </div>
+            </div>
             <span class="material-icons fullscreen-icon" id="fullscreenToggle">fullscreen</span>
         </div>
     </div>

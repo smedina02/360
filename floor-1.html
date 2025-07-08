@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nice Delta Residences - Piso 1</title>
+    <link rel="stylesheet" href="css/style.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body class="floor-plan-page" style="background-image: url('assets/images/floor-1-plan.webp');">
+    <div class="header">
+        <div class="header-left">
+            <span class="material-icons menu-icon">menu</span>
+            <span class="material-icons back-icon" onclick="history.back()">arrow_back</span>
+        </div>
+        <div class="header-right">
+            <span class="material-icons fullscreen-icon" id="fullscreenToggle">fullscreen</span>
+        </div>
+    </div>
+
+    <div class="unit-hotspot" style="top: 40%; left: 25%;" data-unit-id="101">
+        <span class="material-icons">place</span> <div class="hotspot-info">
+            <h4>Unidad 101</h4>
+            <p>2 Ambientes</p>
+            <p>55 m²</p>
+            <button class="btn secondary-btn" onclick="location.href='unit.html?id=123'">Ingresar</button>
+        </div>
+    </div>
+    <div class="unit-hotspot" style="top: 55%; left: 45%;" data-unit-id="102">
+        <span class="material-icons">place</span> <div class="hotspot-info">
+            <h4>Unidad 102</h4>
+            <p>1 Ambiente</p>
+            <p>30 m²</p>
+            <button class="btn secondary-btn" onclick="location.href='unit.html?id=101'">Ingresar</button>
+        </div>
+    </div>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/images/logo.webp" alt="Logo" class="sidebar-logo" loading="lazy">
+            <span class="material-icons close-sidebar-icon">close</span>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="index.html"><span class="material-icons">home</span> Inicio</a></li>
+            <li><a href="project-overview.html"><span class="material-icons">map</span> Masterplan</a></li>
+            <li><a href="amenities-gallery.html"><span class="material-icons">spa</span> Amenities</a></li>
+            <li><a href="#"><span class="material-icons">directions_walk</span> Recorridos</a></li>
+            <li><a href="#"><span class="material-icons">play_circle_filled</span> Video</a></li>
+            <li><a href="#"><span class="material-icons">description</span> Brochure</a></li>
+            <li><a href="location.html"><span class="material-icons">location_on</span> Ubicación</a></li>
+            <li><a href="contact.html"><span class="material-icons">contact_mail</span> Contacto</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <div class="social-icons">
+                <a href="#"><span class="material-icons">email</span></a>
+                <a href="#"><img src="assets/images/instagram-icon.webp" alt="Instagram" loading="lazy" class="icon"></a>
+                <a href="#"><span class="material-icons">language</span></a>
+            </div>
+            <p>© Powered by urbania3d.app</p>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
